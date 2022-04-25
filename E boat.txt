@@ -1,0 +1,109 @@
+char t;
+
+
+
+void setup() {
+
+pinMode(13,OUTPUT);   //left motors forward
+
+pinMode(12,OUTPUT);   //left motors reverse
+
+pinMode(11,OUTPUT);   //right motors forward
+
+pinMode(10,OUTPUT);   //right motors reverse
+
+
+
+Serial.begin(9600);
+ 
+
+
+}
+
+
+
+void loop() {
+
+if(Serial.available()){
+ 
+ t = Serial.read(); //tipe data untuk menyimpan 1 karakter
+ 
+ Serial.println(t); //menunjukkan kondisi 
+
+}
+
+
+
+if(t == 'F'){            // MAJU
+ 
+ 
+
+ 
+digitalWrite(13,HIGH); //pin yang digunakan untuk ON
+
+ digitalWrite(12,LOW); //pin yang digunakan untuk OFF
+ 
+ digitalWrite(11,HIGH); //pin yang digunakan untuk ON
+ 
+ digitalWrite(10,LOW); //pin yang digunakan untuk OFF
+
+}
+
+
+
+else if(t == 'B'){      // MUNDUR
+
+ 
+
+ digitalWrite(13,LOW); //pin yang digunakan untuk ON
+ 
+ digitalWrite(12,HIGH); //pin yang digunakan untuk OFF
+ 
+ digitalWrite(11,LOW); //pin yang digunakan untuk ON
+ 
+ digitalWrite(10,LOW); //pin yang digunakan untuk OFF
+
+}
+
+
+
+else if(t == 'R'){      //BELOK KANAN
+  
+ 
+ digitalWrite(13,HIGH); //pin yang digunakan untuk ON
+ 
+ digitalWrite(12,LOW); //pin yang digunakan untuk OFF
+
+}
+
+
+
+else if(t == 'L'){      //BELOK KIRI
+ 
+
+
+
+ digitalWrite(11,HIGH); //pin yang digunakan untuk ON
+ 
+ digitalWrite(10,LOW); //pin yang digunakan untuk OFF
+
+}
+
+
+
+
+else if(t == 'S'){      //STOP 
+ 
+ digitalWrite(13,LOW); //pin yang digunakan untuk OFF
+ 
+ digitalWrite(12,LOW); //pin yang digunakan untuk OFF
+ 
+ digitalWrite(11,LOW); //pin yang digunakan untuk OFF
+ 
+ digitalWrite(10,LOW); //pin yang digunakan untuk OFF
+
+}
+
+delay(100); //untuk jeda yang akan dibikin
+
+}
